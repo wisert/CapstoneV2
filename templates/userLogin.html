@@ -1,0 +1,13 @@
+<!--This user login page is where the user will enter their username, pwd, and joincode-->
+<h1>{{title}}</h1>
+
+
+<!--if you don't specify a method, it does GET-->
+<form method='POST' action=''>{% csrf_token %}
+{{form.as_p}}
+
+	<form action=""> <!--put url of userdashboard page here-->
+		<input type= 'submit' value='Sign in as User' />
+	</form>
+
+</form>
