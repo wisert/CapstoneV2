@@ -1,0 +1,12 @@
+<!--Template context variable-->
+<h1>{{title}}</h1>
+
+<!--{{user}} & {{request.user}} are defined by settings.py, not the views.py file-->
+
+<!--if you don't specify a method, it does GET-->
+<form method='POST' action=''>{% csrf_token %}
+{{form.as_p}}
+
+<input type= 'submit' value='Create Account' />
+
+</form>
