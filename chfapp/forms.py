@@ -1,23 +1,42 @@
+#must have models created in order to import into here
+
 from django import forms
 
-from .models import CreateAccount
+from .models import UserForm
+
+
+#form that doesn't need a model; literally no use case I can think of now for it, but 
+#just in case let's keep it here for now.
+class ContactForm(forms.Form):
+	first_name = forms.CharField(required=False)
+	email = forms.EmailField()
+	message = forms.CharField()
+
+	# def cleaned_data(self):
+	# 	email = self.cleaned_data.get('email')
+	# 	first_name = self.cleaned_data.get('first_name')
+	# 	message = self.cleaned_data.get('message')
+	# 	return email, first_name, message
+	# 	print ('GOT HERE')
+
+
 
 #Form appears when you choose to add user in the .../admin/createaccount page
-class CreateAccountForm(forms.ModelForm):
+class UserLoginForm(forms.ModelForm):
 	class Meta:
-		model = CreateAccount
-		fields = ['email','organization']
+		model = UserForm
+		fields = ['username','password','joincode']
 	#self = instance of form
-	def clean_email(self):
-		email = self.cleaned_data.get('email')
+	def clean_username(self):
+		username = self.cleaned_data.get('username')
 		# email_base, provider = email.split("@")
 		# domain, extension = provider.split('.')
 		# if not extension == "edu":
 		# 	raise forms.ValidationError("Please use an academic email address.")
-		return email
+		return username
 
-	def clean_first_name(self):
-		first_name = self.cleaned_data.get('first_name')
-		return first_name
+	def clean_joincode(self):
+		joincode = self.cleaned_data.get('joincode')
+		return joincode
 
 

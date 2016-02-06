@@ -28,6 +28,17 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+#email setup
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'somethinghere@gmail.com'
+EMAIL_HOST_PASSWORD = 'gmail password'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+#unlock gmail captcha
+#https://accounts.google.com/displayunlockcaptcha don't do for personal email
+
+
 # Application definition
 
 INSTALLED_APPS = [

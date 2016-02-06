@@ -1,12 +1,8 @@
-<!--Template context variable-->
+<!--This is the initial login page-->
+
 <h1>{{title}}</h1>
 
-<!--{{user}} & {{request.user}} are defined by settings.py, not the views.py file-->
+<button><a href="">Login as User</a></button>
+<button><a href="">Login as Admin</a></button>
 
-<!--if you don't specify a method, it does GET-->
-<form method='POST' action=''>{% csrf_token %}
-{{form.as_p}}
-
-<input type= 'submit' value='Create Account' />
-
-</form>
+<button><a href="">Login without authentication</a></button>

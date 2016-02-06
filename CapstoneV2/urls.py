@@ -18,8 +18,11 @@ from django.contrib import admin
 
 from chfapp.views import home
 
+#where URLS are created; none have been created for userdashboard yet
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='home')
+    url(r'^$', 'chfapp.views.home', name='home'),
+    url(r'^userLogin/$', 'chfapp.views.userLogin', name='userLogin'),
+    url(r'^contact/$', 'chfapp.views.contact', name='contact'),
 
 ]
