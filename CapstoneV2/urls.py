@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
+from django.conf.urls.static import static
 
 from chfapp.views import home
 
@@ -24,5 +26,9 @@ urlpatterns = [
     url(r'^$', 'chfapp.views.home', name='home'),
     url(r'^userLogin/$', 'chfapp.views.userLogin', name='userLogin'),
     url(r'^contact/$', 'chfapp.views.contact', name='contact'),
+    url(r'^userDashboard/$', 'chfapp.views.userDashboard', name='userDashboard'),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

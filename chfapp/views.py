@@ -38,7 +38,12 @@ def userLogin(request):
 
 	return render(request,"userLogin.html", context)
 
-
+def userDashboard(request):
+	title = "Dashboard"
+	context = {
+		"title": title,
+	}
+	return render(request,"userDashboard.html", context)
 
 #test form from tutorials; email sending doesn't work yet
 def contact(request):
