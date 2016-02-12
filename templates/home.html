@@ -1,12 +1,8 @@
-<!--This is the initial login page-->
-<!-- 
-<h1>{{title}}</h1>
-
-<button><a href="">Login as User</a></button>
-<button><a href="">Login as Admin</a></button>
-
-<button><a href="">Login without authentication</a></button> -->
-
+<!--Initial Login Page
+    Created by: CJ
+    Date: 2/9/2016
+    Purpose: Splash page to give users ability to login depending on role.
+-->
 
 {% load staticfiles %}
 <!DOCTYPE html>
@@ -19,7 +15,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel='stylesheet' href='{% static "css/base.css" %}' />
+    <link rel='stylesheet' href='{% static "css/base.css" %}' /> <!--imports stylesheet as created in static_cdn/css-->
     <!--<img src='{ % static "img/beach.jpg" %}' />-->
 
     <title>CHF App (Splash Page)</title>
@@ -37,7 +33,7 @@
     <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="jumbotron.css" rel="stylesheet">
+<!--     <link href="jumbotron.css" rel="stylesheet"> -->
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -49,6 +45,8 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+
+  
   <body>
 
   	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -66,23 +64,20 @@
     </nav>
 
     <div class="container">
-      <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-3">
         </div>
         <div class="col-md-6">
           <h2>InterActivity</h2>
-          <button><a href="">Login as User</a></button>
-          <button><a href="">Login as Admin</a></button>
-
-          <button><a href="">Login without authentication</a></button>
-<!--           <p>Acquire troop size counts from other agents. Careful, the enemy could be listening.</p>
-          <p><a class="btn btn-default" href="#" role="button">Join &raquo;</a></p> -->
+          <button><a href="/userLogin/">Login as User</a></button> <!--normal user-->
+          <button><a href="">Login as Admin</a></button> <!--admin/superuser-->
+          <button><a href="">Login without authentication</a></button> <!--casual user-->
         </div>
         <div class="col-md-3">
         </div>
       </div>
 
+<!--I added this part because of a tutorial. We can play around with it later to see if we need it.-->
 <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -1,4 +1,7 @@
-#All views for the project are created in this page
+
+    # Created by: CJ
+    # Date: 2/9/2016
+    # Purpose: All views for the project are created in this page
 
 from django.shortcuts import render
 from .forms import UserLoginForm, ContactForm

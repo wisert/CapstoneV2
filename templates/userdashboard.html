@@ -1,5 +1,15 @@
 <!--This is where the user can choose which mission they want to do.-->
 <!--{{user}} & {{request.user}} are defined by settings.py, not the views.py file-->
+{# Load the tag library #}
+{% load bootstrap3 %}
+{% load staticfiles %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
-    <link rel='stylesheet' href='{% static "css/base.css" %}' />
+    <link rel='stylesheet' href='{% static "css/userDashboard.css" %}' />
     <!--<img src='{ % static "img/beach.jpg" %}' />-->
 
     <title>CHF App (User Side)</title>
@@ -69,6 +79,7 @@
     <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
+      	<img src='{% static "img/ParchmentTest.png" %}' alt="Parchment"/>
         <h1>Welcome, {{user}}.</h1>
         <p>I am Agent 2187 of the Culper Spy Ring. Help us in our cause and choose a mission to undertake from the list below. </p>
         <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
