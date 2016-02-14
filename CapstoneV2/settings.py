@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'chfapp',
     'bootstrap3',
+
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -91,12 +92,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'ENGINE': 'mysql.connector.django',
-        'NAME': 'mysite',
-        'USER': 'django',
-        'PASSWORD': 'django-pass',
+        'NAME': 'interact_db', #was 'mysite' 'interact_db'
+        'USER': 'root', #was 'django' 'root'
+        'PASSWORD': 'iihnm', #was 'django-pass' 'iihnm'
         'HOST': 'localhost',
-        #'ENGINE': 'django.db.backends.sqlite',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         }
     }
 

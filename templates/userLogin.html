@@ -1,32 +1,29 @@
 <!--This user login page is where the user will enter their username, pwd, and joincode-->
-{# Load the tag library #}
-{% load bootstrap3 %}
+<!-- {# Load the tag library #}
+{% load bootstrap3 %} -->
 {% load staticfiles %}
 
-{# Load CSS and JavaScript #}
+<!-- {# Load CSS and JavaScript #}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
 
 {# Display django.contrib.messages as Bootstrap alerts #}
-{% bootstrap_messages %}
+{% bootstrap_messages %} -->
 <h1>
   <link rel='stylesheet' href='{% static "css/userLogin.css" %}' />
   {{title}}
 </h1>
 
 <body>
-	
+
 {# Display a form #}
-<form method='POST' action="/userDashboard/" class="form"><!--put url of userdashboard page in action-->
-  {% csrf_token %}
-  {% bootstrap_form form %}
-  {% buttons %}
-    <button type="submit" class="btn btn-primary">
-      {% bootstrap_icon "star" %} Submit
-    </button>
-  {% endbuttons %}
-</form>
-
-{# Read the documentation for more information #}
-
+<form method="POST" action="" class="form"><!--put url of userdashboard 
+page in action--> {% csrf_token %}
+	{{form.as_p}}
+ <!--  {% csrf_token %} -->
+<!--   {% bootstrap_form form %}
+  {% buttons %} -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <button><a href="/newUserLogin/">Create User Account</a></button>
+<!--   {% endbuttons %} -->
 </body>
