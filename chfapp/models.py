@@ -31,3 +31,66 @@ class AdminForm(models.Model):
 
 	def __str__(self): #python3 uses __str__
 		return self.email
+
+#Users Table
+class Users(models.Model):
+	userName = models.CharField(max_length=20)
+	password = models.CharField(max_length=20)
+	firstName = models.CharField(max_length=30)
+	lastName = models.CharField(max_length=30)
+	email = models.EmailField(max_length=40)
+
+	def __str__(self):
+		return self.userName, self.firstName, lastName, email
+
+#Admin Table
+class Admin(models.Model):
+    userID = models.ForeignKey(Users)
+    organization = models.CharField(max_length=100)
+
+    def __str__(self):
+    	return self.organization
+
+#Events Table
+class Event(models.Model):
+	userID = models.ForeignKey(Users)
+	adminID = models.ForeignKey(Admin)
+	eventName = models.CharField(max_length=255,blank=False)
+	joincode = models.CharField(max_length=50)
+	enforceUser = models.NullBooleanField(null=True)
+
+	def __str__(self):
+		return self.eventName
+
+class Activity(models.Model):
+	adminID = models.ForeignKey(Admin)
+	eventID = models.ForeignKey(Event)
+	activityName = models.CharField(max_length=100)
+	description = models.CharField(max_length=255)
+	superUser = models.IntegerField()
+	userLimit = models.IntegerField()
+	inactiveUsers = models.NullBooleanField(null=True)
+	revisionState = models.NullBooleanField(null=True)
+	allowReplayActivity = models.NullBooleanField(null=True)
+
+	def __str__(self):
+		return self.activityName, self.description
+
+#Not sure if we even need this as a model but just in case
+class ActivitySession(models.Model):
+	userID = models.ForeignKey(Users)
+	activityID = models.ForeignKey(Activity)
+	startTime = models.DateTimeField()
+	inactive = models.NullBooleanField(null=True)
+	activityCompleted = models.NullBooleanField(null=True)
+	class Meta:
+		unique_together = (('userID', 'activityID', 'startTime'),)
+
+	def __str__(self):
+		return self.startTime
+
+
+
+
+
+

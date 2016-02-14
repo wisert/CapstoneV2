@@ -1,9 +1,7 @@
 #must have models created in order to import into here
-
 from django import forms
-
-from .models import UserForm
-
+from .models import UserForm, Users, Admin, Event, Activity
+from django.conf import settings
 
 #form that doesn't need a model; literally no use case I can think of now for it, but 
 #just in case let's keep it here for now.
@@ -18,8 +16,6 @@ class ContactForm(forms.Form):
 	# 	message = self.cleaned_data.get('message')
 	# 	return email, first_name, message
 	# 	print ('GOT HERE')
-
-
 
 #Form appears when you choose to add user in the .../admin/createaccount page
 class UserLoginForm(forms.ModelForm):
@@ -38,5 +34,40 @@ class UserLoginForm(forms.ModelForm):
 	def clean_joincode(self):
 		joincode = self.cleaned_data.get('joincode')
 		return joincode
+
+#New User Form
+class NewUserAccountForm(forms.ModelForm):
+	class Meta:
+		model = Users
+		fields = ['userName','password','firstName','lastName','email']
+
+	def clean_all(self):
+		userName = self.cleaned_data.get('userName')
+		return userName
+
+class NewAdminForm(forms.ModelForm):
+	class Meta:
+		model = Admin
+		fields = ['organization']
+
+	def clean_organization(self):
+		organization = self.cleaned_data.get('organization')
+		return organization
+
+class NewEventForm(forms.ModelForm):
+	class Meta:
+		model = Event
+		fields = ['eventName','joincode']
+
+	def clean_event(self):
+		return eventName, joincode
+
+class NewActivityForm(forms.ModelForm):
+	class Meta:
+		model = Activity
+		fields = ['activityName','description','superUser','userLimit','allowReplayActivity']
+
+
+
 
 

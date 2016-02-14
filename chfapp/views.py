@@ -1,9 +1,16 @@
-#All views for the project are created in this page
+
+    # Created by: CJ
+    # Date: 2/9/2016
+    # Purpose: All views for the project are created in this page
 
 from django.shortcuts import render
-from .forms import UserLoginForm, ContactForm
+from .forms import UserLoginForm, ContactForm, NewUserAccountForm, NewAdminForm
+from .forms import NewEventForm, NewActivityForm
 from django.core.mail import send_mail
 from django.conf import settings
+from django.http import HttpResponse, HttpResponseRedirect
+
+
 
 # Create your views here.
 def home(request):
@@ -18,7 +25,6 @@ def home(request):
 	return render(request,"home.html", context)
 
 def userLogin(request):
-	title = "Please sign in:"
 	form = UserLoginForm(request.POST or None)
 
 	#video 14/42 has alternate validation methods
@@ -29,18 +35,98 @@ def userLogin(request):
 		context = {
 			"title":"Thank you." #does not yet take you to the user's dashboard
 		}
+		return HttpResponseRedirect("/userDashboard/")
 
 	#parens create instance
 	context = {
-		"title": title,
 		"form": form,
 	}
 
 	return render(request,"userLogin.html", context)
 
+def newUserLogin(request):
+	form = NewUserAccountForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"Hello."
+		}
+		return HttpResponseRedirect("/userDashboard/")
+
+	context = {
+		"form": form,
+	}
+	return render(request,"newUserLogin.html", context)
 
 
-#test form from tutorials; email sending doesn't work yet
+def userDashboard(request):
+	title = "Dashboard"
+	context = {
+		"title": title,
+	}
+	return render(request,"userDashboard.html", context)
+
+
+#This is going to show up at the bottom when they sign up as a user
+#don't do/test this until user use cases are working
+#*******************Haven't tested this as of (2/13/16)********************
+def newAdminLogin(request):
+	form = NewAdminForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"saved Admin organization"
+		}
+		return HttpResponseRedirect("") #add admindashboard here when created
+
+	context = {
+		"form": form,
+	}
+	return render(request,"",context) #figure out how to add to userloginAccountform
+
+#Adding new events -- Will be used by admin; right now just need to create for table.
+#*******************Haven't tested this as of (2/13/16)********************
+def newEventForm(request):
+	form = NewEventForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"saved Event information"
+		}
+		return HttpResponseRedirect("") #add event url here when created.
+
+	context = {
+		"form": form,
+	}
+	return render(request,"",context)
+
+#Adding new activity -- Will be used by admin; right now just need to create for table.
+#*******************Haven't tested this as of (2/13/16)********************
+def newActivityForm(request):
+	form = NewActivityForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"saved Activity information"
+		}
+		return HttpResponseRedirect("") #add event url here when created.
+
+	context = {
+		"form": form,
+	}
+	return render(request,"",context)
+
+
+#********************test form from tutorials; email sending doesn't work yet******************
+#Not actually using this now but don't delete it yet.
 def contact(request):
 	form = ContactForm(request.POST or None)
 	if form.is_valid():
