@@ -1,0 +1,49 @@
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <link rel='stylesheet' href='{% static "css/userDashboard.css" %}' />
+    <!--<img src='{ % static "img/beach.jpg" %}' />-->
+
+    <title>CHF App (User Side)</title>
+
+  </head>
+
+  <body>
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+      <div class="container">
+      	<img src='{% static "img/ParchmentTest.png" %}' alt="Parchment"/>
+        <h1>Welcome, {{user}}.</h1>
+        <p>I am Agent 2187 of the Culper Spy Ring. Help us in our cause and choose a mission to undertake from the list below. </p>
+        <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
+      </div>
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+      {%for a in activities%}
+      <div>
+        <p><h3>{{a.activityName}}</h3></p>
+        <p>{{a.description}}</p>
+        <button><a href="/activityStart/">Begin</a></button>
+      </div>
+      {%endfor%}
+      <hr>
+
+      <footer>
+        <p>&copy; 2015 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+  </body>
+</html>
+
+
+
+

@@ -1,0 +1,39 @@
+
+{% load bootstrap3 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <link rel='stylesheet' href='{% static "css/userDashboard.css" %}' />
+    <!--<img src='{ % static "img/beach.jpg" %}' />-->
+    <title>CHF App (User Side)</title>
+  </head>
+
+  <body>
+
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+
+    <div class="container">
+      <img src='{% static "img/ParchmentTest.png" %}' alt="Parchment"/>
+      <h1>{{activityName}}</h1>
+      <p>{{description}}</p>
+      {% for s in scenes %}
+      <div>
+        <p><h3>{{s.sceneText}}</h3></p>
+      </div>
+      {%endfor%}
+    </div>
+
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <hr>
+      <footer>
+        <p>&copy; 2015 Company, Inc.</p>
+      </footer>
+    </div> <!-- /container -->
+
+  </body>
+</html>

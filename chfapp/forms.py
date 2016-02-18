@@ -1,6 +1,6 @@
 #must have models created in order to import into here
 from django import forms
-from .models import UserForm, Users, Admin, Event, Activity
+from .models import UserForm, Users, Admin, Event, Activity, Scene, SceneOptions, NextScene
 from django.conf import settings
 
 #form that doesn't need a model; literally no use case I can think of now for it, but 
@@ -67,6 +67,32 @@ class NewActivityForm(forms.ModelForm):
 		model = Activity
 		fields = ['activityName','description','superUser','userLimit','allowReplayActivity']
 
+	def clean_activity(self):
+		return activityName, description
+
+class NewSceneForm(forms.ModelForm):
+	class Meta:
+		model = Scene
+		fields = ['instructionText','allowReplayScene']
+
+	def clean_scene(self):
+		return instructionText, allowReplayScene
+
+class NewSceneOptionForm(forms.ModelForm):
+	class Meta:
+		model = SceneOptions
+		fields = ['sceneText']
+
+	def clean_sceneOption(self):
+		return sceneText
+
+class NextSceneForm(forms.ModelForm):
+	class Meta:
+		model = NextScene
+		fields = ['sceneID']
+
+	def clean_sceneOption(self):
+		return sceneID
 
 
 
