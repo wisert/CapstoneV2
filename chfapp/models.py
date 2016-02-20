@@ -34,6 +34,7 @@ class AdminForm(models.Model):
 
 #Users Table
 class Users(models.Model):
+	userID = models.IntegerField(primary_key=True)
 	userName = models.CharField(max_length=20)
 	password = models.CharField(max_length=20)
 	firstName = models.CharField(max_length=30)
@@ -45,14 +46,16 @@ class Users(models.Model):
 
 #Admin Table
 class Admin(models.Model):
-    userID = models.ForeignKey(Users)
-    organization = models.CharField(max_length=100)
+	adminID = models.IntegerField(primary_key=True)
+	userID = models.ForeignKey(Users)
+	organization = models.CharField(max_length=100)
 
-    def __str__(self):
-    	return self.organization
+	def __str__(self):
+		return self.organization
 
 #Events Table
 class Event(models.Model):
+	eventID = models.IntegerField(primary_key=True)
 	userID = models.ForeignKey(Users)
 	adminID = models.ForeignKey(Admin)
 	eventName = models.CharField(max_length=255,blank=False)
@@ -63,7 +66,8 @@ class Event(models.Model):
 		return self.eventName
 
 class Activity(models.Model):
-	adminID = models.ForeignKey(Admin)
+	activityID = models.IntegerField(primary_key=True)
+	adminID = models.ForeignKey(Admin,related_name='adminOwner')
 	eventID = models.ForeignKey(Event)
 	activityName = models.CharField(max_length=100)
 	description = models.CharField(max_length=255)
@@ -89,8 +93,33 @@ class ActivitySession(models.Model):
 	def __str__(self):
 		return self.startTime
 
+class Scene(models.Model):
+	sceneID = models.IntegerField(primary_key=True)
+	activityID = models.ForeignKey(Activity)
+	instructionText = models.CharField(max_length=255)
+	sceneType = models.NullBooleanField(null=True)
+	allowReplayScene = models.NullBooleanField(null=True)
 
+	def __str__(self):
+		return self.instructionText, self.sceneType
 
+class SceneOptions(models.Model):
+	sceneOptionID = models.IntegerField()
+	sceneID = models.ForeignKey(Scene)
+	sceneText = models.CharField(max_length=500)
+	class Meta: 
+		unique_together=(('sceneOptionID', 'sceneID'),)
 
+	def __str__(self):
+		return self.sceneText
 
+class NextScene(models.Model):
+	nextSceneID = models.IntegerField(primary_key=True)
+	sceneOptionID = models.ForeignKey(SceneOptions,related_name='sceneOptionNS')
+	sceneID = models.ForeignKey(SceneOptions,related_name='sceneNS')
+	weight = models.DecimalField(max_digits = 3, decimal_places=2)
+	class Meta:
+		unique_together=(('sceneOptionID', 'sceneID'))
 
+	def __str__(self):
+		return self.weight

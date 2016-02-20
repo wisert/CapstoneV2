@@ -5,7 +5,11 @@
 
 from django.shortcuts import render
 from .forms import UserLoginForm, ContactForm, NewUserAccountForm, NewAdminForm
-from .forms import NewEventForm, NewActivityForm
+from .forms import NewEventForm, NewActivityForm, NewSceneForm, NewSceneOptionForm
+from .models import Activity as act
+from .models import Scene as scn
+from .models import SceneOptions as scnopt
+from .models import NextScene as nxtscn
 from django.core.mail import send_mail
 from django.conf import settings
 from django.http import HttpResponse, HttpResponseRedirect
@@ -22,7 +26,7 @@ def home(request):
 		"title": title,
 	}
 
-	return render(request,"home.html", context)
+	return render(request,"index.html", context)
 
 def userLogin(request):
 	form = UserLoginForm(request.POST or None)
@@ -35,7 +39,7 @@ def userLogin(request):
 		context = {
 			"title":"Thank you." #does not yet take you to the user's dashboard
 		}
-		return HttpResponseRedirect("/userDashboard/")
+		return HttpResponseRedirect("/activityDashboard/")
 
 	#parens create instance
 	context = {
@@ -53,20 +57,40 @@ def newUserLogin(request):
 		context = {
 			"Hello."
 		}
-		return HttpResponseRedirect("/userDashboard/")
+		return HttpResponseRedirect("/activityDashboard/")
 
 	context = {
 		"form": form,
 	}
 	return render(request,"newUserLogin.html", context)
 
-
-def userDashboard(request):
+#View for activity splash page
+def activityDashboard(request):
 	title = "Dashboard"
+
+	activities = act.objects.all()
+
 	context = {
-		"title": title,
+		'title': title,
+		'activities': activities,
 	}
-	return render(request,"userDashboard.html", context)
+	return render(request,"activityDashboard.html", context)
+
+#View for activity start page
+def activityStart(request):
+	title = "Start Activity"
+
+	activity = act.objects.get(activityID=1)
+	scenes = scn.objects.filter(activityID_id = 1)
+
+	context = {
+		'title': title,
+		'activity': activity,
+		'scenes': scenes,
+	}
+	return render(request,"activityStart.html", context)
+
+
 
 
 #This is going to show up at the bottom when they sign up as a user
@@ -117,7 +141,43 @@ def newActivityForm(request):
 		context = {
 			"saved Activity information"
 		}
-		return HttpResponseRedirect("") #add event url here when created.
+		return HttpResponseRedirect("") #add activity url here when created.
+
+	context = {
+		"form": form,
+	}
+	return render(request,"",context)
+
+#Adding new scene -- Will be used by admin; right now just need to create for table.
+#*******************Haven't tested this as of (2/13/16)********************
+def newSceneForm(request):
+	form = NewSceneForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"saved Scene information"
+		}
+		return HttpResponseRedirect("") #add scene url here when created
+
+	context = {
+		"form": form,
+	}
+	return render(request,"",context)
+
+#Adding new sceneoption -- Will be used by admin; right now just need to create for table.
+#*******************Haven't tested this as of (2/13/16)********************
+def newSceneOptionForm(request):
+	form = NewSceneOptionForm(request.POST or None)
+
+	if form.is_valid():
+		instance = form.save(commit=False)
+		instance.save()
+		context = {
+			"saved Scene Option information"
+		}
+		return HttpResponseRedirect("") #add scene option url when created
 
 	context = {
 		"form": form,

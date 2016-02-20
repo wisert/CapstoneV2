@@ -27,7 +27,8 @@ urlpatterns = [
     url(r'^userLogin/$', 'chfapp.views.userLogin', name='userLogin'),
     url(r'^contact/$', 'chfapp.views.contact', name='contact'),
     url(r'^newUserLogin/$', 'chfapp.views.newUserLogin', name='newUserLogin'),
-    url(r'^userDashboard/$', 'chfapp.views.userDashboard', name='userDashboard'),
+    url(r'^activityDashboard/$', 'chfapp.views.activityDashboard', name='activityDashboard'),
+    url(r'^activityStart/$', 'chfapp.views.activityStart',name='activityStart'),
     #url() for when admin form is created/added to newUserLogin
     #url() for when event, activity is created/added
 
