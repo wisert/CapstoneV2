@@ -26,7 +26,7 @@ def home(request):
 		"title": title,
 	}
 
-	return render(request,"home.html", context)
+	return render(request,"index.html", context)
 
 def userLogin(request):
 	form = UserLoginForm(request.POST or None)
