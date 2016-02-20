@@ -7,17 +7,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>News Times a Entertainment Category Flat Bootstrap Responsive Website Template | Single.html:: w3layouts</title>
+<title>Single.html Layout of some kind</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="News Times Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<link href='{% static "css/bootstrap.css" %}' rel="stylesheet" type="text/css" media="all" />
+<link href='{% static "css/style.css" %}' rel="stylesheet" type="text/css" media="all" />
 <!-- js -->
-<script src="js/jquery-1.11.1.min.js"></script>
+<script src='{% static "js/jquery-1.11.1.min.js" %}'></script>
 <!-- //js -->
 <link href='//fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
 </head>
@@ -78,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="#"><i class="glyphicon glyphicon-tags" aria-hidden="true"></i>10</a>
 						</div>
 						<div class="blog-leftr">
-							<img src="images/25.jpg" alt=" " class="img-responsive" />
+							<img src='{% static "img/25.jpg" %}' alt=" " class="img-responsive" />
 							<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
 							sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 							Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -95,7 +95,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="admin-text">
 								<h5>Written By Admin Name</h5>
 								<div class="admin-text-left">
-									<a href="#"><img src="images/icon1.png" alt=""/></a>
+									<a href="#"><img src='{% static "img/icon1.png" %}' alt=""/></a>
 								</div>
 								<div class="admin-text-right">
 									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,There are many variations of passages of Lorem Ipsum available, 
@@ -109,7 +109,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="media response-info">
 								<div class="media-left response-text-left">
 									<a href="#">
-										<img class="media-object" src="images/icon1.png" alt=""/>
+										<img class="media-object" src='{% static "img/icon1.png" %}' alt=""/>
 									</a>
 									<h5><a href="#">Admin</a></h5>
 								</div>
@@ -123,7 +123,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="media response-info">
 										<div class="media-left response-text-left">
 											<a href="#">
-												<img class="media-object" src="images/icon1.png" alt=""/>
+												<img class="media-object" src='{% static "img/icon1.png" %}' alt=""/>
 											</a>
 											<h5><a href="#">Admin</a></h5>
 										</div>
@@ -143,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="media response-info">
 								<div class="media-left response-text-left">
 									<a href="#">
-										<img class="media-object" src="images/icon1.png" alt=""/>
+										<img class="media-object" src='{% static "img/icon1.png" %}' alt=""/>
 									</a>
 									<h5><a href="#">Admin</a></h5>
 								</div>
@@ -185,7 +185,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="recent-grids">
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img src="images/6.jpg" alt=" " class="img-responsive" /></a>
+									<a href="#"><img src='{% static "img/6.jpg" %}' alt=" " class="img-responsive" /></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>
@@ -196,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img src="images/7.jpg" alt=" " class="img-responsive" /></a>
+									<a href="#"><img src='{% static "img/7.jpg" %}' alt=" " class="img-responsive" /></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>
@@ -207,7 +207,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="recent-grid">
 								<div class="wom">
-									<a href="#"><img src="images/8.jpg" alt=" " class="img-responsive" /></a>
+									<a href="#"><img src='{% static "img/8.jpg" %}' alt=" " class="img-responsive" /></a>
 								</div>
 								<div class="wom-right">
 									<h4><a href="#">Integer rutrum ante eu</a></h4>
@@ -338,7 +338,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	</div>
 <!-- //footer -->
 <!-- for bootstrap working -->
-	<script src="js/bootstrap.js"></script>
+	<script src='{% static "js/bootstrap.js" %}'></script>
 <!-- //for bootstrap working -->
 </body>
 </html>
